@@ -1,0 +1,12 @@
+# DADOS BRUTOS
+data/raw/*.csv
+
+# POWER BI
+power_bi/*.pbix
+
+# VSCODE
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
