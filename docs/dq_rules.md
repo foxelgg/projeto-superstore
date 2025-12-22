@@ -124,3 +124,23 @@ Resultado:
 ## 6. Resumo Executivo
 O dataset original é bastante popular, muito usado para estudo e aprendizado, e apresenta excelente qualidade de dados. A qualidade dos dados é comprovada pelas análises executadas durante o Data Profiling que identificariam inconsistências nos dados. Após a finalização da camada Silver, os dados foram considerados aptos para modelagem e análise na camada Gold.
 
+## 7. Tabelas Auxiliares (Returns e People)
+
+### 7.1 Returns
+A tabela 'Returns' funciona como uma tabela de lookup de pedidos devolvidos.
+
+- Cada linha representa um pedido retornado.
+- A granularidade da tabela é de pedido ('Order ID').
+- A coluna 'Order ID' apresenta valores únicos e não nulos.
+- Todos os pedidos 'Order ID' da tabela 'Returns' possuem correspondência na tabela 'Orders', garantindo integridade referencial lógica.
+- A ausência de registros para um pedido na tabela 'Returns' indica implicitamente que o pedido não foi devolvido. Isso ocorre por que a coluna 'Returned' só trabalha com o valor 'Yes', sem a ocorrência de 'No'.
+- A tabela 'Returns' funcionará como uma flag implícita através de LEFT JOINs com a tabela 'Orders'.
+
+### 7.2 People
+A tabela 'People' funciona como uma tabela de atribuição organizacional, relacionando regiões (Region) com seus respectivos responsáveis (Person).
+
+- Cada linha representa uma região única associada a uma pessoa única responsável, ou seja, sem duplicidades nas colunas 'Region' e 'Person'.
+- A granularidade da tabela é de região.
+- Todas os valores presentes na coluna 'region' da tabela 'people' existem no domínio da tabela 'orders' (coluna 'region'), garantindo consistência de domínio.
+- A tabela não representa clientes, embora os nomes presentes na coluna 'Person' possam ser encontrados na coluna 'Customer Name' da tabela 'orders'. É apenas uma coincidência que se dá pelo fato do dataset usar nomes fictícios.
+
