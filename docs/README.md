@@ -52,7 +52,7 @@ A camada Silver é dedicada ao tratamento e validação de dados. Nessa etapa fo
 ### 4.3 Avaliação da Tabela 'silver_people'
 Durante o Data Profiling, a tabela 'silver_people', que contém nomes de gerentes e suas respectivas regiões de responsabilidade, foi analisada, e optou-se por não utilizá-la no modelo analítico, visto que a tabela não está diretamente relacionada ao grão da fato, e resultaria na necessidade de alterar o esquema do modelo dimensional para Snowflake, aumentando a complexidade do projeto sem trazer benefício analítico justificável.
 
-### 5. Modelo Analítico (Camada Gold)
+## 5. Modelo Analítico (Camada Gold)
 
 ### 5.1 Modelagem Dimensional (Camada Gold)
 Camada voltada ao consumo analítico. Nela os dados foram modelados dimensionalmente, tendo sido optado o Star Schema, visando facilitar análises e a integração com o Power BI. No modelo dimensional, foram definidas as tabelas fato e dimensões, as chaves primárias (PK) e estrangeiras (FK), as constraints e os índices, com o objetivo de aprimorar a performance das consultas e alinhar o projeto a cenários de análise de negócios.
@@ -68,13 +68,13 @@ Colunas descritivas foram utilizadas para criar tabelas de dimensões: produtos,
 - Dimensão Data: Grão de 1 data por linha.
 As dimensões serão utilizadas analiticamente em SQL e dentro do Power BI, em conjunto com as métricas da tabela fato.
 
-### 6. Views Analíticas
+## 6. Views Analíticas
 A partir da camada Gold, foram criadas views analíticas, separadas nas categorias 'view base' e 'views complementares'. O objetivo da view base ('vw_sales_analytics') é servir como base para o Power BI, contendo todos os campos analíticos e descritivos sem agregações. As views complementares, por sua vez, serviram como forma de padronizar métricas e KPIs.
 
-### 7. Visualizações e Análises (Power BI)
+## 7. Visualizações e Análises (Power BI)
 Na ferramenta Power BI, os dados da view base foram utilizados para criar métricas e construir os dashboards finais. 
 
-### 8. Conclusão e Próximos Passos
+## 8. Conclusão e Próximos Passos
 A desenvolver.
 
 
