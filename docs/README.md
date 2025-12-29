@@ -37,7 +37,7 @@ O fluxo de dados do projeto ocorre na seguinte ordem:
 Bronze -> Silver -> Gold -> Views Analíticas -> Power BI
 
 ### Diagrama da Arquitetura
-![Arquitetura do Projeto](docs/diagrams/diagrama-superstore.png)
+![Arquitetura do Projeto](diagrams/diagrama-superstore.png)
 
 O diagrama acima representa o fluxo completo dos dados neste projeto.
 
