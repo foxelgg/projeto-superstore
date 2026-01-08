@@ -39,3 +39,11 @@ SELECT DISTINCT
     city,
     region
 FROM silver_orders;
+
+-- Adicionando a coluna city + state na tabela dim_geography - Útil para evitar ambiguidades na criação de visuais de mapas no Power BI
+ALTER TABLE dim_geography
+ADD COLUMN city_state TEXT;
+
+-- Inserção de dados na coluna city_state
+UPDATE dim_geography
+SET city_state = CONCAT(city, ', ', state);
