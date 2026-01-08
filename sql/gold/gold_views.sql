@@ -3,11 +3,12 @@
     Este arquivo documenta a criação de views, a partir das tabelas que compõem o modelo dimensional
     desenvolvido na camada Gold, para consumo analítico em SQL e no Power BI.
     
-    As views serão divididas em duas categorias:
+    As views serão divididas em três categorias:
     - View base: Nomeada de 'vw_sales_analytics', será a view utilizada para alimentar o Power BI. Ela
     é bastante ampla e envolve todas as métricas e colunas descritivas da base de dados, e sua função é
     servir como base para o Power BI, onde análises mais específicas e interativas serão desenvolvidas
     a partir de funções DAX.
+    - Views analíticas: Views específicas que serviram de apoio para análises pontuais no Power BI.
     - Views complementares: Views menos amplas, desenvolvidas exclusivamente neste documento, com foco
     em análises específicas usando SQL.
 
@@ -44,6 +45,25 @@ JOIN dim_date d2 ON f.ship_date_id = d2.date_id
 JOIN dim_customers c ON f.customer_id = c.customer_id
 JOIN dim_products p ON f.product_id = p.product_id
 JOIN dim_geography g ON f.geography_id = g.geography_id;
+
+-- Criação da View Analítica - Análise Geográfica
+CREATE OR REPLACE VIEW vw_geo_analytics AS
+SELECT
+    g.state,
+    g.country,
+    SUM(f.sales) AS receita_total_estado,
+    SUM(f.profit) AS lucro_liquido_estado,
+    COUNT(DISTINCT f.order_id) AS total_pedidos_estado,
+    CASE
+        WHEN SUM(f.profit) < 0 THEN 'Prejuízo'
+        WHEN SUM(f.profit) <= 5000 THEN 'Lucro <= R$5.000'
+        WHEN SUM(f.profit) <= 15000 THEN 'Lucro <= R$15.000'
+    ELSE 'Lucro > R$15.001' END AS faixa_lucro_estado
+FROM fato_sales f
+JOIN dim_geography g ON f.geography_id = g.geography_id
+WHERE f.returned_flag = 0
+GROUP BY g.state, g.country;
+
 
 -- =================================
 -- Criação das Views Complementares
