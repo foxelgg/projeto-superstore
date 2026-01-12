@@ -33,6 +33,7 @@ SELECT
     g.region,
     g.state,
     g.city,
+    g.city_state,
     f.ship_mode,
     f.quantity,
     f.sales,
