@@ -46,4 +46,4 @@ ADD COLUMN city_state TEXT;
 
 -- Inserção de dados na coluna city_state
 UPDATE dim_geography
-SET city_state = CONCAT(city, ', ', state);
+SET city_state = CONCAT(city, ', ', state, ', USA');
