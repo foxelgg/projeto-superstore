@@ -273,7 +273,7 @@ O Treemap "Top 5 Subcategorias por Lucro Líquido" apresenta as cinco subcategor
 
 O gráfico de colunas "Top 5 Subcategorias por Ticket Médio" apresenta as cinco categorias com maior valor médio por pedido. Os tooltips exibem o Ticket Médio, a Quantidade de Produtos Vendidos, a Receita Total de Vendas, o Lucro Líquido e a Margem de Lucro (valor percentual).
 
-[Top 5 Subcategorias por Ticket Médio - Tooltips](../power_bi/screenshots/tooltip_top5_ticket_medio.png)
+![Top 5 Subcategorias por Ticket Médio - Tooltips](../power_bi/screenshots/tooltip_top5_ticket_medio.png)
 
 **Distribuição de Vendas das Subcategorias**
 O gráfico de barras "Total de Produtos Vendidos por Subcategoria" apresenta o volume total de vendas em cada subcategoria e contempla todas as subcategorias existentes, podendo ser filtrado por categorias específicas usando a segmentação de dados do topo da página, assim como qualquer visual desta página. Os tooltips incluem:
@@ -297,7 +297,7 @@ A tabela "Subcategorias por Taxa de Devolução" apresenta a taxa de devoluçõe
 
 **Página 4 - Análise Geográfica**
 
-[Página 4 - Análise Geográfica](../power_bi/screenshots/pagina_4_analise_geografica.png)
+![Página 4 - Análise Geográfica](../power_bi/screenshots/pagina_4_analise_geografica.png)
 
 A Análise Geográfica estuda o desempenho econômico sob viés geográfico, e permite analisar o resultado do negócio à nível de Estados e de Cidades. Diferente das demais páginas, a Análise Geográfica não apresenta uma segmentação no topo da página, visto que a mesma se encontra no canto inferior esquerdo, porque não interage com alguns visuais da página.
 
@@ -327,7 +327,7 @@ A segmentação de dados intitulada "Selecione o Estado", permite a seleção de
 
 O mapa "Lucro Líquido por Cidade - Estado Selecionado" foca o estado selecionado na segmentação de dados, e cria bolhas para todas as cidades com registros de vendas, determinando o tamanho da bolha a partir do montante de lucro líquido arrecadado pela cidade. Quanto maior o lucro da cidade, maior a bolha. O mapa permite visualizar quais cidades de cada estado tem o melhor desempenho. Os tooltips do mapa exibem Localização, Lucro Líquido, Margem de Lucro, Receita Total de Vendas, Quantidade de Pedidos, Quantidade de Produtos Vendidos e Ticket Médio.
 
-[Lucro Líquido por Cidade - Estado Selecionado - Tooltips](../power_bi/screenshots/tooltip_mapa_lucro_cidades.png)
+![Lucro Líquido por Cidade - Estado Selecionado - Tooltips](../power_bi/screenshots/tooltip_mapa_lucro_cidades.png)
 
 > Decisão Analítica: A análise geográfica foi estruturada em dois diferentes níveis: estados e cidades, e os visuais seguem essa ordem, o que cria uma exploração progressiva dos resultados e permitindo detalhamento local.
 
@@ -336,5 +336,16 @@ O mapa "Lucro Líquido por Cidade - Estado Selecionado" foca o estado selecionad
 A tabela "Top 10 Cidades por Lucro Líquido" interage com a segmentação de dados e exibe 10 cidades com melhor desempenho do estado selecionado e age como uma legenda para o mapa "Lucro Líquido por Cidade - Estado Selecionado", trazendo os números do que pode ser visualizado no mapa.
 
 ## 8. Conclusão e Próximos Passos
-A desenvolver.
+Este projeto demonstrou a construção de um pipeline analítico completo, que partiu da ingestão de dados brutos até a consolidação de dashboards interativos, sempre seguindo boas práticas de engenharia e análise de dados.
 
+A aplicação da arquitetura Medallion permitiu estruturar os dados em camadas pré-definidas, e garante a rastreabilidade, a qualidade e a consistência dos dados do projeto. A escolha do Star Schema como modelo dimensional assegurou flexibilidade, simplicidade e alto desempenho às análises, e a integração SQL > Power BI serviu como separação clara entre transformação de dados e consumo analítico.
+
+Os dashboards desenvolvidos em Power BI permitem explorar o desempenho do negócio sob as óticas temporal, por produto e geográfica, fornecendo os principais indicadores do negócio e uma visão abrangente do seu comportamento econômico.
+
+Para os próximos passos, este projeto poderia se expandir com:
+
+- Implementação de Pipeline de Ingestão Automatizado.
+- Publicação dos Dashboards no Power BI Service.
+- Inclusão de Controle de Atualização Incremental.
+- Ampliação do Modelo para Análise de Custos Logísticos e Prazos de Entrega.
+- Aplicação de Técnicas Estatísticas e Preditivas para Projeção de Vendas.
