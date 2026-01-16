@@ -133,8 +133,6 @@ in
     #"Colunas Renomeadas3"
 ```
 
-```markdown
-
 Além da view principal, foi carregada no Power BI a view 'vw_geo_analytics', criada em SQL, contendo agregações por estado e classificação de resultado econômico com CASE WHEN. Essa view é utilizada exclusivamente no mapa "Resultado Econômico por Estado - Visão Geral e Histórica" da página de Análise Geográfica no dashboard, e não se relaciona com as demais tabelas do modelo, pois representa uma agregação em grão específico.
 
 As medidas DAX foram armazenadas em uma espécie de tabela, denominada "Medidas". Nesta tabela, só existem as medidas DAX, que calculam métricas do negócio.
