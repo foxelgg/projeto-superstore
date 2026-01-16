@@ -100,7 +100,6 @@ O modelo analítico no Power BI foi construído a partir de views estruturadas n
 A principal fonte de dados do dashboard no Power BI é a view 'vw_sales_analytics', que consolida as métricas da tabela fato junto com todas as colunas descritivas das tabelas dimensão (customers, date, geography e products). Dessa forma, o Power BI consome uma tabela analítica já pronta para uso.
 
 Dentro do Power BI, a única relação adicional criada foi entre a view 'vw_sales_analytics', colunas order_date (ativa) e ship_date (inativa) e a tabela calendário 'dim_calendario', construída no própria Power BI, com o intuito de permitir o uso de funções de inteligência de tempo. A 'dim_calendario' foi criada em linguagem M, e apresenta o seguinte código:
-```markdown
 ```powerquery
 let
 /* Criando Variáveis */
@@ -132,7 +131,9 @@ Duration = Duration.Days(EndDate - InitialDate) +1,
     #"Colunas Renomeadas3" = Table.RenameColumns(#"Tipo Alterado",{{"Personalizar", "Ano Mês Num"}})
 in
     #"Colunas Renomeadas3"
-    ```
+```
+
+```markdown
 
 Além da view principal, foi carregada no Power BI a view 'vw_geo_analytics', criada em SQL, contendo agregações por estado e classificação de resultado econômico com CASE WHEN. Essa view é utilizada exclusivamente no mapa "Resultado Econômico por Estado - Visão Geral e Histórica" da página de Análise Geográfica no dashboard, e não se relaciona com as demais tabelas do modelo, pois representa uma agregação em grão específico.
 
