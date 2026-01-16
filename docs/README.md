@@ -100,7 +100,8 @@ O modelo analítico no Power BI foi construído a partir de views estruturadas n
 A principal fonte de dados do dashboard no Power BI é a view 'vw_sales_analytics', que consolida as métricas da tabela fato junto com todas as colunas descritivas das tabelas dimensão (customers, date, geography e products). Dessa forma, o Power BI consome uma tabela analítica já pronta para uso.
 
 Dentro do Power BI, a única relação adicional criada foi entre a view 'vw_sales_analytics', colunas order_date (ativa) e ship_date (inativa) e a tabela calendário 'dim_calendario', construída no própria Power BI, com o intuito de permitir o uso de funções de inteligência de tempo. A 'dim_calendario' foi criada em linguagem M, e apresenta o seguinte código:
-
+```markdown
+```powerquery
 let
 /* Criando Variáveis */
 Tabela1 = List.Buffer(Sales_Analytics[order_date]),
@@ -131,6 +132,7 @@ Duration = Duration.Days(EndDate - InitialDate) +1,
     #"Colunas Renomeadas3" = Table.RenameColumns(#"Tipo Alterado",{{"Personalizar", "Ano Mês Num"}})
 in
     #"Colunas Renomeadas3"
+    ```
 
 Além da view principal, foi carregada no Power BI a view 'vw_geo_analytics', criada em SQL, contendo agregações por estado e classificação de resultado econômico com CASE WHEN. Essa view é utilizada exclusivamente no mapa "Resultado Econômico por Estado - Visão Geral e Histórica" da página de Análise Geográfica no dashboard, e não se relaciona com as demais tabelas do modelo, pois representa uma agregação em grão específico.
 
@@ -166,7 +168,7 @@ Essas medidas servem para que os visuais possam se ajustar automaticamente às s
 
 **Página 1 - Visão Geral**
 
-![Página 1 - Visão Geral](power_bi/screenshots/pagina_1_visao_geral.png)
+![Página 1 - Visão Geral](../power_bi/screenshots/pagina_1_visao_geral.png)
 
 A Visão Geral apresenta os principais indicadores de desempenho comercial do período analisado, e permite a compreensão da situação econômica e operacional do negócio.
 
@@ -199,7 +201,7 @@ O gráfico de linhas "Lucro Líquido Mensal" apresenta a evolução do lucro lí
 
 Os tooltips servem, para este gráfico, para permitir uma análise contextual sem a necessidade de trocar de visual.
 
-![Lucro Líquido Mensal - Tooltips](power_bi/screenshots/tooltip_lucro_mensal.png)
+![Lucro Líquido Mensal - Tooltips](../power_bi/screenshots/tooltip_lucro_mensal.png)
 
 **Desempenho por Categorias de Produtos**
 O desempenho por categorias de produtos é dividido em dois gráficos distintos:
@@ -219,7 +221,7 @@ Ambos os gráficos utilizam os seguintes tooltips:
 
 **Página 2 - Análise Temporal**
 
-![Página 2 - Análise Temporal](power_bi/screenshots/pagina_2_analise_temporal.png)
+![Página 2 - Análise Temporal](../power_bi/screenshots/pagina_2_analise_temporal.png)
 
 A Análise Temporal explora a evolução do desempenho do negócio ao longo dos anos, e permite identificar tendências de crescimento e variações de desempenho entre diferentes períodos.
 
@@ -248,7 +250,7 @@ A matriz "Painel de Evolução Mensal - Ano Selecionado" exibe o detalhamento m�
 
 **Página 3 - Análise de Produtos**
 
-![Página 3 - Análise de Produtos](power_bi/screenshots/pagina_3_analise_produtos.png)
+![Página 3 - Análise de Produtos](../power_bi/screenshots/pagina_3_analise_produtos.png)
 
 A Análise de Produtos explora o desempenho das subcategorias de cada categoria de produtos existente no negócio, e permite identificar padrões de volume de vendas, rentabilidade, ticket médio, relação quantidade x ticket médio e comportamento das devoluções de produtos.
 
@@ -272,7 +274,7 @@ O Treemap "Top 5 Subcategorias por Lucro Líquido" apresenta as cinco subcategor
 
 O gráfico de colunas "Top 5 Subcategorias por Ticket Médio" apresenta as cinco categorias com maior valor médio por pedido. Os tooltips exibem o Ticket Médio, a Quantidade de Produtos Vendidos, a Receita Total de Vendas, o Lucro Líquido e a Margem de Lucro (valor percentual).
 
-[Top 5 Subcategorias por Ticket Médio - Tooltips](power_bi/screenshots/tooltip_top5_ticket_medio.png)
+[Top 5 Subcategorias por Ticket Médio - Tooltips](../power_bi/screenshots/tooltip_top5_ticket_medio.png)
 
 **Distribuição de Vendas das Subcategorias**
 O gráfico de barras "Total de Produtos Vendidos por Subcategoria" apresenta o volume total de vendas em cada subcategoria e contempla todas as subcategorias existentes, podendo ser filtrado por categorias específicas usando a segmentação de dados do topo da página, assim como qualquer visual desta página. Os tooltips incluem:
@@ -296,7 +298,7 @@ A tabela "Subcategorias por Taxa de Devolução" apresenta a taxa de devoluçõe
 
 **Página 4 - Análise Geográfica**
 
-[Página 4 - Análise Geográfica](power_bi/screenshots/pagina_4_analise_geografica.png)
+[Página 4 - Análise Geográfica](../power_bi/screenshots/pagina_4_analise_geografica.png)
 
 A Análise Geográfica estuda o desempenho econômico sob viés geográfico, e permite analisar o resultado do negócio à nível de Estados e de Cidades. Diferente das demais páginas, a Análise Geográfica não apresenta uma segmentação no topo da página, visto que a mesma se encontra no canto inferior esquerdo, porque não interage com alguns visuais da página.
 
@@ -326,7 +328,7 @@ A segmentação de dados intitulada "Selecione o Estado", permite a seleção de
 
 O mapa "Lucro Líquido por Cidade - Estado Selecionado" foca o estado selecionado na segmentação de dados, e cria bolhas para todas as cidades com registros de vendas, determinando o tamanho da bolha a partir do montante de lucro líquido arrecadado pela cidade. Quanto maior o lucro da cidade, maior a bolha. O mapa permite visualizar quais cidades de cada estado tem o melhor desempenho. Os tooltips do mapa exibem Localização, Lucro Líquido, Margem de Lucro, Receita Total de Vendas, Quantidade de Pedidos, Quantidade de Produtos Vendidos e Ticket Médio.
 
-[Lucro Líquido por Cidade - Estado Selecionado - Tooltips](power_bi/screenshots/tooltip_mapa_lucro_cidades.png)
+[Lucro Líquido por Cidade - Estado Selecionado - Tooltips](../power_bi/screenshots/tooltip_mapa_lucro_cidades.png)
 
 > Decisão Analítica: A análise geográfica foi estruturada em dois diferentes níveis: estados e cidades, e os visuais seguem essa ordem, o que cria uma exploração progressiva dos resultados e permitindo detalhamento local.
 
