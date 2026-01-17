@@ -22,6 +22,7 @@ O atual projeto demonstra a aplicação das seguintes habilidades:
 - Definição de Constraints e Índices
 - Views para consumo analítico
 - Integração entre SQL e Power BI
+- Construção de Dashboards com Power BI
 
 ## 2. Tecnologias Utilizadas
 
@@ -136,6 +137,8 @@ in
 Além da view principal, foi carregada no Power BI a view 'vw_geo_analytics', criada em SQL, contendo agregações por estado e classificação de resultado econômico com CASE WHEN. Essa view é utilizada exclusivamente no mapa "Resultado Econômico por Estado - Visão Geral e Histórica" da página de Análise Geográfica no dashboard, e não se relaciona com as demais tabelas do modelo, pois representa uma agregação em grão específico.
 
 As medidas DAX foram armazenadas em uma espécie de tabela, denominada "Medidas". Nesta tabela, só existem as medidas DAX, que calculam métricas do negócio.
+
+> Decisão de Modelagem: As colunas descritivas 'ship_mode', 'region' e 'segment' foram preservadas na view 'vw_sales_analytics' e carregadas no modelo do Power BI como dimensões disponíveis para análise. Entretanto, nesta versão do dashboard, essas dimensões não foram utilizadas em visuais ou filtros, pois outros indicadores foram priorizados para a elaboração deste dashboard. A manutenção dessas colunas no modelo permite a expansão futura das análises, como estudos logísticos por tipo de envio (ship_mode), comportamento por segmento de clientes (segment) e desempenho por região do país (region), sem a necessidade de alterações no pipeline SQL ou na modelagem do Data Warehouse.
 
 ### 7.3 Medidas Criadas
 
@@ -344,8 +347,8 @@ Os dashboards desenvolvidos em Power BI permitem explorar o desempenho do negóc
 
 Para os próximos passos, este projeto poderia se expandir com:
 
-- Implementação de Pipeline de Ingestão Automatizado.
-- Publicação dos Dashboards no Power BI Service.
-- Inclusão de Controle de Atualização Incremental.
+- Implementar pipeline automatizado de ingestão para substituir o carregamento manual dos CSVs.
+- Automatizar a aplicação das regras de qualidade antes da publicação na camada Gold.
 - Ampliação do Modelo para Análise de Custos Logísticos e Prazos de Entrega.
 - Aplicação de Técnicas Estatísticas e Preditivas para Projeção de Vendas.
+- Publicar os dashboards no Power BI Service.
